@@ -1,0 +1,16 @@
+# Archivos de QA local (no desplegar)
+qa-*.mjs
+qa-*.py
+qa-*.png
+qa-*.html
+preview-*.png
+verify-*.mjs
+bg-check*.png
+meta-*.html
+meta-*.png
+ref-*.png
+_*.png
+http-server.log
+3d-preview.png
+render-full.png
+universo-matematico-3d.html

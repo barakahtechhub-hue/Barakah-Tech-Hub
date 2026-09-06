@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo orquestamos cascadas de IA resilientes — Barakah Tech Hub</title>
+  <meta name="description" content="El patrón de ingeniería que permite a nuestros sistemas degradarse con elegancia cuando un modelo falla, sin detener la operación." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0E1A'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%2340E0D0' font-family='Arial' font-weight='bold'>B</text></svg>" />
+</head>
+<body>
+
+  <div class="service-bg" aria-hidden="true"><div id="cosmos3d"></div></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark"><img src="../img/logo.png" alt="Logo Barakah Tech Hub" onerror="this.parentElement.classList.add('is-fallback');this.remove()">B</span>
+        <span class="logo-text">Barakah <em>Tech&nbsp;Hub</em></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#ecosistema">Ecosistema</a>
+        <a href="../index.html#servicios">Servicios</a>
+        <a href="../index.html#insights">Insights</a>
+      </nav>
+      <a href="../index.html#contacto" class="btn btn-primary nav-cta">Contactar</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="service-page">
+    <div class="container">
+      <a href="../index.html#insights" class="service-back">← Todos los insights</a>
+      <p class="section-label">Insights — IA</p>
+      <h1>Cómo orquestamos <span class="gradient-text">cascadas de IA</span> resilientes</h1>
+      <p class="service-lede">
+        Un modelo de lenguaje puede fallar: un proveedor se cae, una latencia se dispara o
+        una respuesta llega vacía. Si ese modelo es un punto único de fallo, tu operación
+        se detiene con él. La cascada es nuestra respuesta: varios modelos coordinados que
+        se relevan entre sí para que el trabajo nunca se interrumpa.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="service-sections">
+        <section class="service-block">
+          <h2>El problema: un punto de fallo</h2>
+          <p>Cuando una tarea productiva depende de una sola llamada a un modelo, el sistema hereda tres vulnerabilidades:</p>
+          <ul class="service-list">
+            <li><strong>Disponibilidad.</strong> Si el proveedor se cae, se cae tu proceso. Y se cae sin aviso.</li>
+            <li><strong>Coste ciego.</strong> El mismo modelo caro se usa para tareas triviales y críticas, sin distinción.</li>
+            <li><strong>Comportamiento desconocido.</strong> Sin rutas alternativas, no hay forma de medir si la respuesta es "la mejor posible" o simplemente "lo que tocó".</li>
+          </ul>
+        </section>
+
+        <section class="service-block">
+          <h2>Cómo funciona una cascada</h2>
+          <ol class="service-steps">
+            <li><strong>Enrutamiento por tarea.</strong> Clasificamos cada solicitud y la enviamos al modelo más adecuado: el pequeño y barato para lo rutinario, el grande para lo complejo.</li>
+            <li><strong>Verificación de salida.</strong> Validación estructural y semántica de la respuesta antes de que toque la operación: formato, permisos, coherencia.</li>
+            <li><strong>Degradación elegante.</strong> Si el modelo primario falla, se escala a uno alternativo con un contexto de reintento; si todos fallan, se eleva a un humano con todo el contexto.</li>
+            <li><strong>Registro y aprendizaje.</strong> Cada salto de nivel queda registrado, y el enrutamiento se ajusta según tasas de éxito reales.</li>
+          </ol>
+        </section>
+
+        <section class="service-block">
+          <h2>Lo aprendido en producción</h2>
+          <ul class="service-list">
+            <li>Los <strong>timeouts y reintentos</strong> importan más que la elección del modelo: una cascada sin disciplina de latencia sigue siendo frágil, solo que más cara.</li>
+            <li>La <strong>verificación estructural</strong> (¿es esto lo que la operación espera?) detecta más fallos reales que cualquier benchmark.</li>
+            <li>Las acciones irreversibles — enviar un correo, cobrar, borrar — requieren <strong>aprobación humana configurable</strong>. La automatización no decide sola en esos puntos.</li>
+          </ul>
+        </section>
+
+        <section class="service-block service-cta-block">
+          <h2>¿Tu operación depende de un solo modelo?</h2>
+          <p>Diseñamos cascadas que degradan con elegancia y miden cada decisión. Cuéntanos qué proceso quieres sostener y te proponemos la arquitectura.</p>
+          <a href="mailto:contacto@barakahtechhub.com" class="btn btn-primary">Conversar con nosotros</a>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border-top:none;">
+      <span>© 2025 Barakah Tech Hub. Todos los derechos reservados.</span>
+      <span class="footer-muted"><a href="mailto:contacto@barakahtechhub.com" style="color:inherit">contacto@barakahtechhub.com</a></span>
+    </div>
+  </footer>
+
+  <script src="../js/cosmos3d.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
