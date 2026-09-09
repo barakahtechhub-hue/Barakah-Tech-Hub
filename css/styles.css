@@ -30,6 +30,9 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* Crea un stacking context: sin esto, body::before con z-index:-1 se pinta
+     DETRÁS del fondo opaco del body y el fondo institucional nunca se ve. */
+  isolation: isolate;
 }
 
 /* ---------- Fondo institucional (póster geométrico BarakahTechHub) ----------
