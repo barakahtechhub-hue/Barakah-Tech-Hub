@@ -31,6 +31,30 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+/* ---------- Fondo institucional (póster geométrico BarakahTechHub) ----------
+   Translúcido: la imagen queda perceptible y el logotipo central se ve nítido.
+   El velo es un degradado más opaco a la izquierda (donde vive el texto) y casi
+   transparente a la derecha (zona del nombre), y el póster se desplaza un poco a
+   la derecha para que el nombre no quede detrás del contenido. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(107deg,
+      rgba(250, 251, 255, 0.88) 0%,
+      rgba(250, 251, 255, 0.62) 48%,
+      rgba(250, 251, 255, 0.25) 100%),
+    url('../img/fondo-barakah.png') 58% 50% / cover no-repeat;
+  pointer-events: none;
+}
+
+/* El fondo ahora es la imagen institucional: se apagan las decoraciones generativas previas */
+.grid-lines, .glow, .bg-path, .bg-path-thin, .bg-node, .bg-ray { display: none; }
+
+
 .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
 ::selection { background: rgba(15, 26, 46, 0.85); color: #fff; }
@@ -91,20 +115,6 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
 .btn-ghost:hover .arrow { transform: translateX(4px); }
 .btn-lg { padding: 16px 34px; font-size: 1.05rem; }
 
-/* ====== FONDO 3D (WebGL) ====== */
-.service-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
-.service-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(120% 90% at 50% 0%, rgba(10,14,26,0) 40%, rgba(10,14,26,.85) 100%);
-}
-.service-bg canvas { display: block; }
-.service-bg::before {
-  content: ''; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(10,14,26,.55) 0%, rgba(10,14,26,.1) 35%, rgba(10,14,26,.55) 100%);
-  pointer-events: none;
-}
-.service-bg::after { z-index: 2; }
-
 /* ---------- Nav ---------- */
 .nav {
   position: fixed;
@@ -163,14 +173,6 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
 .section, .hero, .footer, .trust { position: relative; z-index: 1; }
 
 /* ---------- Fondo generativo matemático ---------- */
-.bg-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.bg-canvas svg { width: 100%; height: 100%; display: block; }
 .bg-dot { fill: rgba(15, 26, 46, 0.13); }
 .bg-path {
   fill: none;
@@ -241,119 +243,6 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
 }
 
-/* ===== Sacred geometry (intricate generative SVG) ===== */
-/* Capa WebGL 3D — se superpone al SVG; si falla WebGL, el SVG queda como respaldo */
-.cosmos3d {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-.cosmos3d canvas { display: block; width: 100%; height: 100%; }
-.hero-bg:has(.cosmos3d canvas) .sacred-geo { display: none; }
-.sacred-geo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.08));
-}
-.sacred-geo .sg-stroke {
-  fill: none;
-  stroke: rgba(37, 99, 235, 0.16);
-  stroke-width: 1;
-  stroke-linejoin: round;
-}
-.sacred-geo .sg-stroke-accent {
-  fill: none;
-  stroke: rgba(13, 148, 136, 0.14);
-  stroke-width: 0.8;
-}
-.sacred-geo .sg-node {
-  fill: rgba(37, 99, 235, 0.3);
-  animation: sg-node-pulse 5s ease-in-out infinite;
-}
-@keyframes sg-node-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-.sacred-geo .sg-line {
-  stroke: rgba(37, 99, 235, 0.07);
-  stroke-width: 0.6;
-}
-.sacred-geo .sg-bloom {
-  animation: sg-breathe 16s ease-in-out infinite;
-  transform-origin: 60% 42%;
-}
-.sacred-geo .sg-bloom > * { animation: sg-glow 16s ease-in-out infinite; }
-@keyframes sg-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.65; }
-}
-.sacred-geo .sg-bloom-2 {
-  animation: sg-breathe 22s ease-in-out infinite reverse;
-  transform-origin: 78% 60%;
-}
-@keyframes sg-breathe {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(6deg) scale(1.035); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sacred-geo .sg-bloom, .sacred-geo .sg-bloom-2 { animation: none; }
-  .sacred-geo .sg-bloom > *, .sacred-geo .sg-node { animation: none; }
-}
-
-.hero-content { position: relative; max-width: 900px; }
-.hero-eyebrow {
-  display: inline-block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text);
-  border: 1px solid var(--border);
-  background: #FFFFFF;
-  padding: 7px 16px;
-  border-radius: 100px;
-  margin-bottom: 28px;
-  box-shadow: 0 2px 10px rgba(15, 26, 46, 0.06);
-}
-.hero-eyebrow strong { color: var(--text); font-weight: 700; }
-.hero h1 {
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-}
-.hero-sub {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 640px;
-  margin-bottom: 36px;
-}
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
-
-.hero-line {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  max-width: 560px;
-}
-.hero-line i {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--border-hover);
-  flex-shrink: 0;
-}
 
 /* ---------- Trust bar ---------- */
 .trust {
@@ -565,6 +454,42 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
   border-top: 1px solid var(--border);
   font-size: 0.82rem;
   color: var(--text-muted);
+}
+
+/* ---------- Vidrio esmerilado sobre el fondo institucional ----------
+   Deben ir DESPUÉS de las reglas originales para ganar en la cascada. */
+.btn-ghost {
+  background: rgba(250, 251, 255, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.post, .cta-box {
+  background: rgba(250, 251, 255, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.manifesto {
+  background: rgba(242, 245, 251, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.footer {
+  background: rgba(242, 245, 251, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.trust { background: rgba(242, 245, 251, 0.5); }
+
+/* Móvil: pantalla estrecha, el nombre queda al centro del viewport y el texto
+   ocupa todo el ancho → velo más uniforme para mantener la legibilidad. */
+@media (max-width: 720px) {
+  body::before {
+    background:
+      linear-gradient(180deg,
+        rgba(250, 251, 255, 0.82) 0%,
+        rgba(250, 251, 255, 0.55) 100%),
+      url('../img/fondo-barakah.png') 50% 40% / cover no-repeat;
+  }
 }
 
 /* ---------- Páginas legales ---------- */
