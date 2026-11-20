@@ -596,3 +596,40 @@ html.js .reveal.visible {
   .contact-ways { flex-direction: column; }
   .btn-block { width: 100%; }
 }
+
+/* ---------- Banner de cookies ---------- */
+.cookie-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(15, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  z-index: 2000;
+  display: none;
+}
+.cookie-banner.visible { display: block; }
+.cookie-content {
+  max-width: 1140px; margin: 0 auto; padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.cookie-content > div { flex: 1; min-width: 220px; }
+.cookie-title { font-weight: 700; margin: 0 0 6px; }
+.cookie-text { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+.cookie-actions { display: flex; gap: 10px; }
+
+/* ---------- Mejoras estéticas sutiles ---------- */
+.service {
+  box-shadow: 0 4px 20px rgba(15, 26, 46, 0.04);
+}
+.plan {
+  box-shadow: 0 4px 20px rgba(15, 26, 46, 0.04);
+}
+.cta-box {
+  box-shadow: 0 20px 60px rgba(15, 26, 46, 0.06);
+}
+.btn-primary {
+  box-shadow: 0 4px 12px rgba(15, 26, 46, 0.15);
+}
+.whatsapp-float {
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
