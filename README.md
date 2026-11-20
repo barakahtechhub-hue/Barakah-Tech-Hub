@@ -84,7 +84,7 @@ Cada `git push` a la rama principal redespliega automáticamente.
 ## Pendientes antes de producción (obligatorio para vender)
 
 - [ ] Completar datos registrales reales en `legal/aviso-legal.html` (NIT, domicilio social, cámara de comercio).
-- [ ] Reemplazar el teléfono placeholder `+573000000000` y el correo `contacto@barakahtechhub.com` por tus datos reales en `index.html`, `legal/` y JSON-LD.
+- [ ] Datos reales ya aplicados: Teléfono +57 311 677 8098, correo admin@barakahtechhub.com, NIT 902080128.
 - [ ] Conectar un dominio propio en Render (Settings → Custom Domains) y usar ese dominio en el JSON-LD y sitemap.
 - [ ] Configurar un medio de pago real (Stripe, PayPal, link de pago bancario o Wompi) en los botones "Contratar" — por ahora apuntan a `mailto:` y WhatsApp.
 - [ ] Revisar y adaptar `legal/terminos.html` con un abogado según tu país (cláusulas de consumo, reembolsos, facturación en COP).
