@@ -657,7 +657,7 @@ html.js .reveal.visible { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Pasos para contratar ===== */
-.steps { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 18px; }
+.steps { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 18px; counter-reset: step-counter; }
 .steps li { display: flex; gap: 14px; padding: 16px 20px; background: var(--surface); border-radius: 14px; border: 1px solid var(--border); }
 .steps li strong { color: var(--accent); font-size: 1.05rem; }
 .steps li p { margin: 4px 0 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -723,6 +723,116 @@ summary:hover { background: var(--surface); }
   .contact-ways { flex-direction: column; }
   .btn-block { width: 100%; }
   .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 0.8rem; }
+}
+
+/* ===== Premium upgrades ===== */
+:root {
+  --shadow-soft: 0 4px 20px -4px rgba(15, 26, 46, 0.06);
+  --shadow-medium: 0 12px 40px -8px rgba(15, 26, 46, 0.10);
+  --shadow-strong: 0 24px 60px -12px rgba(15, 26, 46, 0.14);
+}
+
+/* Botones premium */
+.btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: -1;
+}
+.btn:hover::before { transform: translateX(100%); }
+.btn-primary {
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+.btn-ghost {
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+
+/* Hero más impactante */
+.hero h1 { letter-spacing: -0.02em; }
+.hero-trust { display: flex; gap: 16px; font-size: 0.88rem; color: var(--text-muted); align-items: center; }
+.hero-trust i {
+  display: inline-block; width: 1px; height: 12px; background: var(--border); margin: 0 4px;
+}
+
+/* Tarjetas de servicio */
+.service {
+  position: relative;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.service:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--accent);
+}
+.service h3 { margin: 0 0 8px; font-size: 1.25rem; }
+.service p { margin: 0 0 14px; color: var(--text-muted); font-size: 0.94rem; }
+.service-link {
+  font-size: 0.85rem; font-weight: 700; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.service-link .arrow { transition: transform 0.2s ease; }
+.service:hover .service-link .arrow { transform: translateX(4px); }
+
+/* Tarjetas de precios premium */
+.plan {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.plan:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
+.plan-featured {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-strong);
+  background: var(--bg-2);
+}
+.plan-price { font-size: 2.2rem; }
+.plan-note small { color: var(--text-muted); }
+.price-row { font-size: 0.95rem; }
+
+/* Pasos para contratar */
+.steps li {
+  position: relative;
+  padding-left: 56px;
+}
+.steps li::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center;
+}
+.steps li strong { display: block; font-size: 1.1rem; margin-bottom: 2px; }
+
+/* FAQ */
+summary { position: relative; }
+summary::after {
+  content: "+"; position: absolute; right: 14px; font-size: 1.2rem; font-weight: 400;
+  transition: transform 0.2s ease;
+}
+details[open] summary::after { content: "−"; transform: rotate(0deg); }
+
+/* Responsive premium */
+@media (max-width: 720px) {
+  .plan { transform: none; }
+  .plan-featured { transform: scale(1.02); }
 }
 
 /* ===== Precios dentro de páginas de servicio ===== */

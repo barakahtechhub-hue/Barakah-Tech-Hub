@@ -34,11 +34,16 @@ Cada `git push` a la rama principal redespliega automáticamente.
 
 ## Modelo de negocio
 
-Barakah Tech Hub ofrece servicios de **desarrollo web, aplicaciones y automatización** para todo tipo de cliente (emprendedores, pymes y empresas).
+Barakah Tech Hub ofrece servicios de **desarrollo web, aplicaciones y automatización** para todo tipo de cliente (emprendedores, pymes y empresas) con un modelo de **suscripción mensual en COP**.
 
-Dos modalidades de pago:
-1. **Al contado:** precio único por proyecto (señal 50% + 50% a la entrega). El cliente es dueño del código entregado.
-2. **Por plan (mensualidad):** distribución del costo + soporte, mantenimiento y actualizaciones incluidas. Permanencia mínima de 6 meses.
+Precios mensuales (incluyen hosting en Render, equivalente a $7 USD valorados dentro de tu cuota):
+- **Starter:** desde **$69.000 – $89.000 COP/mes** — sitio web corporativo o landing page (hasta 5 páginas).
+- **Growth:** desde **$189.000 COP/mes** — aplicación web o software a medida con usuarios, roles, panel de administración y soporte prioritario.
+- **Scale:** desde **$499.000 COP/mes** — plataformas técnicas, automatización con IA, equipo dedicado y SLA.
+
+**El dominio es exclusivo del cliente:** lo adquieres y pagas directamente donde prefieras (GoDaddy, Namecheap, etc.). Barakah Tech Hub no revende dominios.
+
+Permanencia mínima de 6 meses en planes mensuales. ¿Prefieres pago único al contado? Cotizamos tu proyecto por separado.
 
 Los precios están en `index.html` (sección Precios y Planes) y en el detalle de cada servicio bajo `servicios/`.
 
@@ -78,9 +83,9 @@ Cada `git push` a la rama principal redespliega automáticamente.
 
 ## Pendientes antes de producción (obligatorio para vender)
 
-- [ ] Completar datos registrales reales en `legal/aviso-legal.html` (NIF/CIF, domicilio social, registro mercantil).
+- [ ] Completar datos registrales reales en `legal/aviso-legal.html` (NIT, domicilio social, cámara de comercio).
 - [ ] Reemplazar el teléfono placeholder `+573000000000` y el correo `contacto@barakahtechhub.com` por tus datos reales en `index.html`, `legal/` y JSON-LD.
 - [ ] Conectar un dominio propio en Render (Settings → Custom Domains) y usar ese dominio en el JSON-LD y sitemap.
-- [ ] Configurar un medio de pago real (Stripe, PayPal, link de pago bancario) en los botones "Contratar" — por ahora apuntan a `mailto:` y WhatsApp.
-- [ ] Revisar y adaptar `legal/terminos.html` con un abogado según tu país (cláusulas de consumo, reembolsos, facturación).
+- [ ] Configurar un medio de pago real (Stripe, PayPal, link de pago bancario o Wompi) en los botones "Contratar" — por ahora apuntan a `mailto:` y WhatsApp.
+- [ ] Revisar y adaptar `legal/terminos.html` con un abogado según tu país (cláusulas de consumo, reembolsos, facturación en COP).
 - [ ] Conectar los artículos de Insights a páginas reales (o un CMS headless como Sanity más adelante).
