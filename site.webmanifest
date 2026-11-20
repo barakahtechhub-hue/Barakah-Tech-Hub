@@ -1,0 +1,9 @@
+{
+  "name": "Barakah Tech Hub",
+  "short_name": "Barakah",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1A2E",
+  "theme_color": "#0F1A2E",
+  "icons": []
+}
