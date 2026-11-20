@@ -852,3 +852,22 @@ details[open] summary::after { content: "âˆ’"; transform: rotate(0deg); }
 .price-value strong { color: var(--accent); }
 .price-note { margin-top: 12px; font-size: 0.88rem; color: var(--text-muted); }
 
+
+
+/* ===== FORZAR FONDO VISIBLE: transparencia en todos los contenedores principales =====
+   Esto permite que el fondo pintoresco de body::before se vea en toda la página. */
+.section, .hero, .footer, .container, .cta-box, .manifesto-box, .plan, .service,
+.audience-card, .post, .blog-grid, .ventures, .venture, main, header.nav,
+.nav-inner, .service-page, .legal-page, .pricing-card, .cookie-content {
+  background: transparent !important;
+}
+
+/* El nav pegado necesita un fondo muy ligero para no tapar todo, pero translúcido */
+.nav {
+  background: transparent !important;
+}
+.nav.scrolled {
+  background: rgba(248, 250, 255, 0.6) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
