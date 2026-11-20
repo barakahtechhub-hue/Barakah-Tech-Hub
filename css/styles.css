@@ -25,7 +25,11 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
-  background: transparent; /* se ve el fondo pintoresco de body::before */
+  background:
+    linear-gradient(135deg,
+      #f8fafc 0%,
+      #f1f5f9 45%,
+      #e2e8f0 100%);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
