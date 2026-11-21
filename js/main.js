@@ -54,4 +54,61 @@
     }
   };
   probe.src = 'img/logo.png';
+
+  // Año de copyright siempre vigente
+  const yearEl = document.getElementById('copyrightYear');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // Insights: tarjetas de artículos generadas desde datos
+  const POSTS_DATA = [
+    {
+      tag: 'IA',
+      date: '2025-11-14',
+      title: 'Cómo orquestamos cascadas de IA resilientes',
+      excerpt: 'El patrón de ingeniería que permite a nuestros sistemas degradarse con elegancia cuando un modelo falla.',
+      url: null // publica el artículo y pon aquí su URL
+    },
+    {
+      tag: 'Producto',
+      date: '2025-09-02',
+      title: 'El futuro de las agendas automatizadas',
+      excerpt: 'De la gestión manual de citas a sistemas que negocian, priorizan y confirman solos.',
+      url: null // publica el artículo y pon aquí su URL
+    }
+  ];
+
+  const blogGrid = document.getElementById('blogGrid');
+  if (blogGrid) {
+    const fmt = new Intl.DateTimeFormat('es', { month: 'short', year: 'numeric' });
+    POSTS_DATA.forEach((post, i) => {
+      const card = document.createElement('a');
+      card.className = 'post reveal' + (i > 0 ? ' delay-' + i : '');
+      if (post.url) {
+        card.href = post.url;
+      } else {
+        card.href = '#insights';
+        card.setAttribute('aria-disabled', 'true');
+        card.title = 'Próximamente';
+      }
+      const meta = document.createElement('div');
+      meta.className = 'post-meta';
+      const tag = document.createElement('span');
+      tag.className = 'post-tag';
+      tag.textContent = post.tag;
+      const date = document.createElement('span');
+      date.className = 'post-date';
+      date.textContent = fmt.format(new Date(post.date + 'T00:00:00'));
+      meta.append(tag, date);
+      const h3 = document.createElement('h3');
+      h3.textContent = post.title;
+      const p = document.createElement('p');
+      p.textContent = post.excerpt;
+      const link = document.createElement('span');
+      link.className = 'post-link';
+      link.textContent = post.url ? 'Leer artículo →' : 'Próximamente →';
+      card.append(meta, h3, p, link);
+      blogGrid.appendChild(card);
+      observer.observe(card);
+    });
+  }
 })();

@@ -10,7 +10,7 @@
   <meta property="og:description" content="Creamos sitios web, aplicaciones y automatizaciones para tu negocio. Paga al contado o elige un plan mensual con soporte incluido." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://barakahtechhub.com/" />
-  <meta property="og:image" content="https://barakahtechhub.com/img/preview-hero.png" />
+  <meta property="og:image" content="https://barakahtechhub.com/img/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -315,19 +315,8 @@
         <p class="section-label">Insights</p>
         <h2>Criterio que <span class="gradient-text">compartimos</span>.</h2>
       </div>
-      <div class="blog-grid">
-        <a href="#" class="post reveal">
-          <div class="post-meta"><span class="post-tag">IA</span><span class="post-date">2025</span></div>
-          <h3>Cómo orquestamos cascadas de IA resilientes</h3>
-          <p>El patrón de ingeniería que permite a nuestros sistemas degradarse con elegancia cuando un modelo falla.</p>
-          <span class="post-link">Leer artículo →</span>
-        </a>
-        <a href="#" class="post reveal delay-1">
-          <div class="post-meta"><span class="post-tag">Producto</span><span class="post-date">2025</span></div>
-          <h3>El futuro de las agendas automatizadas</h3>
-          <p>De la gestión manual de citas a sistemas que negocian, priorizan y confirman solos.</p>
-          <span class="post-link">Leer artículo →</span>
-        </a>
+      <div class="blog-grid" id="blogGrid">
+        <!-- Las tarjetas de posts se generan en js/main.js desde POSTS_DATA -->
       </div>
     </div>
   </section>
@@ -383,13 +372,13 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2025 Barakah Tech Hub. Todos los derechos reservados.</span>
+      <span>© <span id="copyrightYear">2026</span> Barakah Tech Hub. Todos los derechos reservados.</span>
       <span class="footer-muted">Precios en USD, referenciales. Sujetos a cotización.</span>
     </div>
   </footer>
 
   <!-- ===== BANNER COOKIES ===== -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="Cookies">
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Aviso de cookies">
     <div class="cookie-content">
       <div>
         <p class="cookie-title">Usamos cookies</p>
